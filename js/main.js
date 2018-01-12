@@ -41,11 +41,9 @@ var flipCard = function () {
 	console.log(cards[cardId].cardImage);
 	console.log(cards[cardId].suit);
 
-	// using querySelector to store ***
-	var currentCard = document.querySelector("[data-id='" + cardId + "']")
-	// setting the image source attribute of the currentCard variable to reference the cardImage value and change the displayed image
-	currentCard.setAttribute('src', cards[cardId].cardImage);
-	// time delay 400 milliseconds. if cardsInPlay equals 2, then run the checkForMatch function ** why is cardId in brackets?
+	// this = img, this sets the source attribute of the card that has been clicked, and puts the card image in 
+	this.setAttribute('src', cards[cardId].cardImage);
+	// time delay 400 milliseconds. if cardsInPlay equals 2, then run the checkForMatch function
 	setTimeout(function(){
 		if (cardsInPlay.length === 2) {
 		checkForMatch(cardId);
@@ -53,8 +51,7 @@ var flipCard = function () {
 	}, 400);
 }
 
-// again why is cardID in brackets?**
-var checkForMatch = function(cardId) {
+var checkForMatch = function() {
 	// creates condition if the first card flipped is the same as the second card that is flipped create alert
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 		alert("You found a match!");
